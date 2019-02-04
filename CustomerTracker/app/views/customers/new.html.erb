@@ -1,0 +1,10 @@
+Customer List
+
+<%= form_for @customer do |f| %>
+First Name : <%= f.text_field :firstname %> <br/>
+Last Name : <%= f.text_field :lastname %>  <br/>
+Contact : <%= f.text_field :contact %>  <br/>
+Address : <%= f.text_area :address %>  <br/>
+<%= submit_tag "Create" %>
+
+<% end %>

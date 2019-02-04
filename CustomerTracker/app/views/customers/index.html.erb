@@ -1,0 +1,48 @@
+<ul>
+	<% if user_signed_in? %>
+	    <li> <%= link_to current_user.email , edit_user_registration_path %> </li>
+		<li> <%= link_to "Logout" , destroy_user_session_path, method: :delete %> </li>
+	<% else %>
+	<li> <%= link_to "SignUp", new_user_registration_path %> </li> 
+	<li> <%= link_to "Login" , new_user_session_path %> </li>
+	<% end %>
+</ul>
+
+
+
+<h1> Customers List </h1>
+
+<% if !@customers.blank? %>
+
+<table>
+<thead>
+<tr>
+<th> Customer Name </th>
+<th> Contact </th>
+<th> Address </th>
+<th> Action </th>
+</tr>
+</thead>
+
+<tbody>
+<% for i in @customers do %>
+
+<tr>
+<td> <%= i.firstname %> <%= i.lastname %> </td>
+<td> <%= i.contact %> </td>
+<td> <%= i.address %></td>
+<td> <%= link_to "Edit","/customers/#{i.id}/edit"  %> | <%= link_to "Delete",i,method: :delete %> 
+</td>
+</tr>
+
+<% end %>
+
+</tbody>
+</table>
+
+<% end %>
+
+<%= link_to "Add New Customer", new_customer_path %>
+<br/>
+
+<nav > 
